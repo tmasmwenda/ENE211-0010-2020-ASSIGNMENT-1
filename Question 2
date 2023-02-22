@@ -1,0 +1,85 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+//Person class
+class Person {
+    private:
+        int age;
+        string firstname;
+        string lastname;
+
+    public:
+        //constructor
+        Person(int age, string firstname, string lastname) {
+            this->age = age;
+            this->firstname = firstname;
+            this->lastname = lastname;
+        }
+
+        //member methods
+        void getValues() {
+            cout<<"Age: "<<age<<endl;
+            cout<<"First Name: "<<firstname<<endl;
+            cout<<"Last Name: "<<lastname<<endl;
+        }
+
+        void setValues(int age, string firstname, string lastname) {
+            this->age = age;
+            this->firstname = firstname;
+            this->lastname = lastname;
+        }
+};
+
+//Student class inheriting from Person class
+class Student: public Person {
+    private:
+        string institution;
+        int year;
+        int registrationNumber;
+
+    public:
+        //constructor
+        Student(int age, string firstname, string lastname, string institution, int year, int registrationNumber):
+            Person(age, firstname, lastname) {
+            this->institution = institution;
+            this->year = year;
+            this->registrationNumber = registrationNumber;
+        }
+
+        //member methods
+        void getValues() {
+            //calling getValues method from Person class
+            Person::getValues();
+
+            cout<<"Institution: "<<institution<<endl;
+            cout<<"Year of Study: "<<year<<endl;
+            cout<<"Registration Number: "<<registrationNumber<<endl;
+        }
+
+        void setValues(string institution, int year, int registrationNumber) {
+            this->institution = institution;
+            this->year = year;
+            this->registrationNumber = registrationNumber;
+        }
+};
+
+int main() {
+    //creating a Person object
+    Person p(22, "Thomas", "Mwenda");
+
+    //creating a Student object
+    Student s(22, "Fred", "Kitonga", "Jomo Kenyatta University", 3, -0010/2020);
+
+    //getting values for Student object
+    s.getValues();
+
+    //setting values for Student object
+    s.setValues("Jomo Kenyatta University", 3, -000-8/2020);
+
+    //getting values for Student object after setting new values
+    s.getValues();
+
+    return 0;
+}
+
